@@ -1,0 +1,42 @@
+{
+    "auth": {
+        "onboarding": {
+            "title1": "Find or List Your Perfect Ride",
+            "desc1": "Rent from hundreds of models or turn your car into a source of income today.",
+            "title2": "Seamless Booking & Management",
+            "desc2": "Reserve a car in seconds or manage your fleet with our powerful agency tools.",
+            "title3": "Verified & Fully Insured",
+            "desc3": "Drive with peace of mind. Every transaction and vehicle is protected.",
+            "get_started": "Get Started",
+            "skip": "Skip",
+            "next": "Next"
+        },
+        "login": {
+            "title": "Welcome Back",
+            "subtitle": "Log in to manage your rentals or find a ride",
+            "email": "Email Address",
+            "password": "Password",
+            "forgot_password": "Forgot Password?",
+            "login_button": "Connect",
+            "continue_with": "OR CONTINUE WITH",
+            "no_account": "Don't have an account?",
+            "register_now": "Register Now",
+            "connect_with_google": "Sign in with Google"
+        }
+    },
+    "media": {
+        "upload": {
+            "picking": "Uploading...",
+            "success": "Upload complete!",
+            "tap_to_upload": "Tap to upload file",
+            "from_camera": "Take from camera",
+            "from_gallery": "Choose from gallery"
+        },
+        "errors": {
+            "connection_timeout": "Connection timed out. Check your internet.",
+            "send_timeout": "Upload timed out. The file might be too large.",
+            "generic_server_error": "An unexpected server error occurred.",
+            "unexpected": "Something went wrong during upload."
+        }
+    }
+}

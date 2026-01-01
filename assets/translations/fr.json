@@ -1,0 +1,42 @@
+{
+    "auth": {
+        "onboarding": {
+            "title1": "Trouvez ou Louez Votre Véhicule",
+            "desc1": "Louez parmi des centaines de modèles ou transformez votre voiture en source de revenus.",
+            "title2": "Réservation et Gestion Fluides",
+            "desc2": "Réservez en quelques secondes ou gérez votre flotte avec nos outils puissants.",
+            "title3": "Vérifié et Entièrement Assuré",
+            "desc3": "Roulez l'esprit tranquille. Chaque transaction et véhicule est protégé.",
+            "get_started": "Commencer",
+            "skip": "Passer",
+            "next": "Suivant"
+        },
+        "login": {
+            "title": "Bon retour",
+            "subtitle": "Connectez-vous pour gérer vos locations",
+            "email": "Adresse e-mail",
+            "password": "Mot de passe",
+            "forgot_password": "Mot de passe oublié ?",
+            "login_button": "Se connecter",
+            "continue_with": "OU CONTINUEZ AVEC",
+            "no_account": "Vous n'avez pas de compte ?",
+            "register_now": "Inscrivez-vous",
+            "connect_with_google": "Connecter avec Google"
+        }
+    },
+    "media": {
+        "upload": {
+            "picking": "Téléchargement en cours...",
+            "success": "Téléchargement terminé !",
+            "tap_to_upload": "Appuyez pour charger un fichier",
+            "from_camera": "Prendre via l'appareil photo",
+            "from_gallery": "Choisir depuis la galerie"
+        },
+        "errors": {
+            "connection_timeout": "Délai de connexion dépassé. Veuillez vérifier votre connexion internet.",
+            "send_timeout": "Le téléchargement est trop long. Le fichier est peut-être trop volumineux.",
+            "generic_server_error": "Erreur du serveur. Veuillez réessayer plus tard.",
+            "unexpected": "Une erreur inattendue est survenue lors du téléchargement."
+        }
+    }
+}
