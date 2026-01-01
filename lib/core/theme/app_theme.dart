@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'app_palette.dart';
 
 class AppTheme {
-  static OutlineInputBorder _border([Color color = AppPalette.border]) => OutlineInputBorder(
+  static OutlineInputBorder _border([Color color = AppPalette.border]) =>
+      OutlineInputBorder(
         borderSide: BorderSide(color: color, width: 1.5),
         borderRadius: BorderRadius.circular(12),
       );
@@ -19,61 +20,64 @@ class AppTheme {
       primary: AppPalette.primary,
       surface: AppPalette.card,
       error: AppPalette.error,
-      onPrimary: AppPalette.primaryText,
-      onSurface: AppPalette.secondaryText,
+      onSurface: AppPalette.primaryText,
+      onSurfaceVariant: AppPalette.secondaryText,
     ),
 
-actionIconTheme: ActionIconThemeData(
-    backButtonIconBuilder: (BuildContext context) => const Icon(Icons.chevron_left_rounded, size: 30),
-  ),
+    actionIconTheme: ActionIconThemeData(
+      backButtonIconBuilder: (BuildContext context) =>
+          const Icon(Icons.chevron_left_rounded, size: 30),
+    ),
 
-  textTheme: const TextTheme(
-    displayLarge: TextStyle(
-      fontSize: 32,
-      fontWeight: FontWeight.w700, 
-      color: AppPalette.primaryText,
+    textTheme: const TextTheme(
+      displayLarge: TextStyle(
+        fontSize: 32,
+        fontWeight: FontWeight.w700,
+        color: AppPalette.primaryText,
+      ),
+      headlineMedium: TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.w600,
+        color: AppPalette.primaryText,
+      ),
+      titleMedium: TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.w500,
+        color: AppPalette.primaryText,
+      ),
+      bodyLarge: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        color: AppPalette.primaryText,
+      ),
+      bodySmall: TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w300,
+        color: AppPalette.secondaryText,
+      ),
+      labelLarge: TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w600,
+        color: AppPalette.primaryText,
+      ),
     ),
-    headlineMedium: TextStyle(
-      fontSize: 24,
-      fontWeight: FontWeight.w600, 
-      color: AppPalette.primaryText,
-    ),
-    titleMedium: TextStyle(
-      fontSize: 18,
-      fontWeight: FontWeight.w500,
-      color: AppPalette.primaryText,
-    ),
-    bodyLarge: TextStyle(
-      fontSize: 16,
-      fontWeight: FontWeight.w400,
-      color: AppPalette.primaryText,
-    ),
-    bodySmall: TextStyle(
-      fontSize: 12,
-      fontWeight: FontWeight.w300,
-      color: AppPalette.secondaryText,
-    ),
-    labelLarge: TextStyle(
-      fontSize: 14,
-      fontWeight: FontWeight.w600, 
-      color: AppPalette.primaryText,
-    ),
-  ),
 
-  appBarTheme: const AppBarTheme(
-    backgroundColor: AppPalette.background,
-    elevation: 0,
-    centerTitle: true,
-    titleTextStyle: TextStyle(
-      fontFamily: 'SpaceGrotesk',
-      color: AppPalette.primaryText, 
-      fontSize: 20, 
-      fontWeight: FontWeight.w600, // SemiBold
+    appBarTheme: const AppBarTheme(
+      backgroundColor: AppPalette.background,
+      elevation: 0,
+      centerTitle: true,
+      titleTextStyle: TextStyle(
+        fontFamily: 'SpaceGrotesk',
+        color: AppPalette.primaryText,
+        fontSize: 20,
+        fontWeight: FontWeight.w600, // SemiBold
+      ),
+      iconTheme: IconThemeData(color: AppPalette.primaryText),
     ),
-    iconTheme: IconThemeData(color: AppPalette.primaryText),
-  ),
 
-    floatingActionButtonTheme: FloatingActionButtonThemeData(shape: CircleBorder()),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      shape: CircleBorder(),
+    ),
 
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
@@ -83,7 +87,7 @@ actionIconTheme: ActionIconThemeData(
       focusedBorder: _border(AppPalette.primary),
       errorBorder: _border(AppPalette.error),
       focusedErrorBorder: _border(AppPalette.error),
-      hintStyle: const TextStyle(color: AppPalette.secondaryText),
+      hintStyle: const TextStyle(color: AppPalette.secondaryText, fontSize: 14),
     ),
 
     elevatedButtonTheme: ElevatedButtonThemeData(
@@ -123,7 +127,7 @@ actionIconTheme: ActionIconThemeData(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
     ),
-    
+
     cardTheme: CardThemeData(
       color: AppPalette.card,
       elevation: 0,
