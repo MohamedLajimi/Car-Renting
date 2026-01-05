@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 
 class TapToUploadWidget extends StatelessWidget {
   final VoidCallback onTap;
-  const TapToUploadWidget({super.key, required this.onTap});
+  final String? desc;
+  const TapToUploadWidget({super.key, required this.onTap, this.desc});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class TapToUploadWidget extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               Text(
-                context.tr('media.upload.tap_to_upload'),
+                desc ?? context.tr('media.upload.tap_to_upload'),
                 style: textTheme.bodyMedium?.copyWith(
                   color: colorScheme.onSurfaceVariant,
                 ),

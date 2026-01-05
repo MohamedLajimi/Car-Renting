@@ -1,0 +1,84 @@
+name: Flutter Tests
+
+on:
+  push:
+    branches-ignore:
+      - main
+      - dev
+  
+  pull_request:
+    branches: [ dev ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.38.5'  
+          channel: 'stable'
+      
+      # Step 3: Get dependencies
+      - name: Install dependencies
+        run: flutter pub get
+      
+      # Step 4: Analyze code (checks for errors)
+      - name: Analyze code
+        run: flutter analyze
+      
+      # Step 5: Run tests
+      - name: Run tests
+        run: flutter test
+      
+      # Step 6: Check test coverage (optional)
+      - name: Check code coverage
+        run: flutter test --coverage
+      
+      # Step 7: Upload coverage report (optional)
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./coverage/lcov.info
+          fail_ci_if_error: false 
+
+  # Auto-merge job (runs only if tests pass)
+  auto-merge:
+    needs: test  # This runs ONLY if test job succeeds
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/auth'  # Only for auth branch
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Get full history
+      
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: auth
+          base: dev
+          title: "Auto-merge: Auth feature tests passed ✅"
+          body: |
+            ## 🎉 Automated Pull Request
+            
+            All tests passed successfully!
+            
+            **Branch:** auth → dev
+            **Tests:** ✅ Passed
+            
+            This PR was automatically created after successful test execution.
+          labels: automated, tests-passed
+      
+      # Optional: Auto-approve and merge
+      - name: Enable Pull Request Automerge
+        if: success()
+        run: gh pr merge --auto --merge
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

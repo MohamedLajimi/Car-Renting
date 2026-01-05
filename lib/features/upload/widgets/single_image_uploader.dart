@@ -9,8 +9,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SingleImageUploader extends StatelessWidget {
+  final String? desc;
   final Function(String) onSuccess;
-  const SingleImageUploader({super.key, required this.onSuccess});
+  final Function onRemove;
+  const SingleImageUploader({
+    super.key,
+    required this.onSuccess,
+    this.desc,
+    required this.onRemove,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +40,7 @@ class SingleImageUploader extends StatelessWidget {
 
       builder: (context, state) => switch (state) {
         UploadInitial() => TapToUploadWidget(
+          desc: desc,
           onTap: () => MediaPickerBottomSheet.show(
             context,
             onImagesSelected: (files) =>
@@ -48,8 +56,10 @@ class SingleImageUploader extends StatelessWidget {
               right: -5,
               top: -5,
               child: RemoveIconButton(
-                onRemove: () =>
-                    context.read<UploadCubit>().removeImage(urls.first),
+                onRemove: () {
+                  context.read<UploadCubit>().removeImage(urls.first);
+                  onRemove();
+                },
               ),
             ),
           ],

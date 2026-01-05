@@ -1,19 +1,25 @@
+import 'package:car_renting/core/app_status_bloc/app_status_bloc.dart';
 import 'package:car_renting/core/di/injection_container.dart';
 import 'package:car_renting/core/routes/router.dart';
 import 'package:car_renting/core/theme/app_theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await init();
+  
   runApp(
     EasyLocalization(
       supportedLocales: [Locale('en'), Locale('fr')],
       path: 'assets/translations',
       fallbackLocale: Locale('en', 'US'),
-      child: MyApp(),
+      child: BlocProvider(
+        create: (context) => serviceLocator<AppStatusBloc>()..add(AppStarted()),
+        child: MyApp(),
+      ),
     ),
   );
 }

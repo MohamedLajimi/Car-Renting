@@ -26,7 +26,7 @@ class AppTheme {
 
     actionIconTheme: ActionIconThemeData(
       backButtonIconBuilder: (BuildContext context) =>
-          const Icon(Icons.chevron_left_rounded, size: 30),
+          const Icon(Icons.keyboard_arrow_left, size: 30),
     ),
 
     textTheme: const TextTheme(
@@ -65,12 +65,13 @@ class AppTheme {
     appBarTheme: const AppBarTheme(
       backgroundColor: AppPalette.background,
       elevation: 0,
+      scrolledUnderElevation: 0,
       centerTitle: true,
       titleTextStyle: TextStyle(
         fontFamily: 'SpaceGrotesk',
         color: AppPalette.primaryText,
         fontSize: 20,
-        fontWeight: FontWeight.w600, // SemiBold
+        fontWeight: FontWeight.w600,
       ),
       iconTheme: IconThemeData(color: AppPalette.primaryText),
     ),
@@ -79,7 +80,13 @@ class AppTheme {
       shape: CircleBorder(),
     ),
 
+    dividerTheme: DividerThemeData(
+      color: AppPalette.secondaryText,
+      thickness: 0.4,
+    ),
+
     inputDecorationTheme: InputDecorationTheme(
+      errorMaxLines: 5,
       filled: true,
       fillColor: AppPalette.card,
       contentPadding: const EdgeInsets.all(18),
