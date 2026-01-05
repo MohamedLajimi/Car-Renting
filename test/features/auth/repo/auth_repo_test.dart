@@ -1,51 +1,32 @@
 import 'package:car_renting/features/auth/models/signup_params.dart';
 import 'package:car_renting/features/auth/models/user_model.dart';
 import 'package:car_renting/features/auth/repositories/auth_repository.dart';
-import 'package:car_renting/features/auth/repositories/i_auth_repository.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 
-class MockAuthRepository extends Mock implements IAuthRepository {}
-class MockFirebaseAuth extends Mock implements FirebaseAuth {}
-class MockFirebaseFirestore extends Mock implements FirebaseFirestore {}
-class MockSharedPreferences extends Mock implements SharedPreferences {}
-class MockUserCredential extends Mock implements UserCredential {}
-class MockUser extends Mock implements User {}
-class MockCollectionReference extends Mock implements CollectionReference<Map<String, dynamic>> {}
-class MockDocumentReference extends Mock implements DocumentReference<Map<String, dynamic>> {}
-class MockDocumentSnapshot extends Mock implements DocumentSnapshot<Map<String, dynamic>> {}
-class MockGoogleSignIn extends Mock implements GoogleSignIn {}
-class MockGoogleSignInAccount extends Mock implements GoogleSignInAccount {}
-class MockGoogleSignInAuthentication extends Mock implements GoogleSignInAuthentication {}
+import '../mocks/auth_mocks.dart';
+
 
 void main() {
   late AuthRepository authRepository;
   late MockFirebaseAuth mockFirebaseAuth;
-  late MockFirebaseFirestore mockFirestore;
+  late FakeFirebaseFirestore fakeFirestore;
   late MockSharedPreferences mockSharedPreferences;
   late MockUserCredential mockUserCredential;
   late MockUser mockUser;
-  late MockCollectionReference mockCollectionRef;
-  late MockDocumentReference mockDocumentRef;
-  late MockDocumentSnapshot mockDocumentSnapshot;
 
   setUp(() {
     mockFirebaseAuth = MockFirebaseAuth();
-    mockFirestore = MockFirebaseFirestore();
+    fakeFirestore = FakeFirebaseFirestore();
     mockSharedPreferences = MockSharedPreferences();
     mockUserCredential = MockUserCredential();
     mockUser = MockUser();
-    mockCollectionRef = MockCollectionReference();
-    mockDocumentRef = MockDocumentReference();
-    mockDocumentSnapshot = MockDocumentSnapshot();
 
     authRepository = AuthRepository(
       firebaseAuth: mockFirebaseAuth,
-      firestore: mockFirestore,
+      firestore: fakeFirestore,
       sharedPreferences: mockSharedPreferences,
     );
   });
@@ -104,15 +85,12 @@ void main() {
     test('should return UserModel when user is authenticated and exists in Firestore', () async {
       when(() => mockFirebaseAuth.currentUser).thenReturn(mockUser);
       when(() => mockUser.uid).thenReturn(userId);
-      when(() => mockFirestore.collection('users')).thenReturn(mockCollectionRef);
-      when(() => mockCollectionRef.doc(userId)).thenReturn(mockDocumentRef);
-      when(() => mockDocumentRef.get()).thenAnswer((_) async => mockDocumentSnapshot);
-      when(() => mockDocumentSnapshot.exists).thenReturn(true);
-      when(() => mockDocumentSnapshot.data()).thenReturn(userData);
+      
+      await fakeFirestore.collection('users').doc(userId).set(userData);
 
       final result = await authRepository.getCurrentUserData();
 
-      expect(result.isRight(), true);
+      expect(result.isRight(), isTrue);
       result.fold(
         (failure) => fail('Should return Right'),
         (user) {
@@ -122,7 +100,6 @@ void main() {
         },
       );
       verify(() => mockFirebaseAuth.currentUser).called(1);
-      verify(() => mockFirestore.collection('users')).called(1);
     });
 
     test('should return Failure when user is not authenticated', () async {
@@ -130,21 +107,17 @@ void main() {
 
       final result = await authRepository.getCurrentUserData();
 
-      expect(result.isLeft(), true);
+      expect(result.isLeft(), isTrue);
       verify(() => mockFirebaseAuth.currentUser).called(1);
     });
 
     test('should return Failure when user document does not exist', () async {
       when(() => mockFirebaseAuth.currentUser).thenReturn(mockUser);
       when(() => mockUser.uid).thenReturn(userId);
-      when(() => mockFirestore.collection('users')).thenReturn(mockCollectionRef);
-      when(() => mockCollectionRef.doc(userId)).thenReturn(mockDocumentRef);
-      when(() => mockDocumentRef.get()).thenAnswer((_) async => mockDocumentSnapshot);
-      when(() => mockDocumentSnapshot.exists).thenReturn(false);
 
       final result = await authRepository.getCurrentUserData();
 
-      expect(result.isLeft(), true);
+      expect(result.isLeft(), isTrue);
     });
   });
 
@@ -166,18 +139,15 @@ void main() {
           )).thenAnswer((_) async => mockUserCredential);
       when(() => mockUserCredential.user).thenReturn(mockUser);
       when(() => mockUser.uid).thenReturn(userId);
-      when(() => mockFirestore.collection('users')).thenReturn(mockCollectionRef);
-      when(() => mockCollectionRef.doc(userId)).thenReturn(mockDocumentRef);
-      when(() => mockDocumentRef.get()).thenAnswer((_) async => mockDocumentSnapshot);
-      when(() => mockDocumentSnapshot.exists).thenReturn(true);
-      when(() => mockDocumentSnapshot.data()).thenReturn(userData);
+      
+      await fakeFirestore.collection('users').doc(userId).set(userData);
 
       final result = await authRepository.loginWithEmailAndPassword(
         email: email,
         password: password,
       );
 
-      expect(result.isRight(), true);
+      expect(result.isRight(), isTrue);
       result.fold(
         (failure) => fail('Should return Right'),
         (user) {
@@ -198,7 +168,7 @@ void main() {
         password: password,
       );
 
-      expect(result.isLeft(), true);
+      expect(result.isLeft(), isTrue);
     });
   });
 
@@ -219,15 +189,12 @@ void main() {
           )).thenAnswer((_) async => mockUserCredential);
       when(() => mockUserCredential.user).thenReturn(mockUser);
       when(() => mockUser.uid).thenReturn(userId);
-      when(() => mockFirestore.collection('users')).thenReturn(mockCollectionRef);
-      when(() => mockCollectionRef.doc(userId)).thenReturn(mockDocumentRef);
-      when(() => mockDocumentRef.set(any())).thenAnswer((_) async => {});
 
       final result = await authRepository.signupWithEmailAndPassword(
         params: signUpParams,
       );
 
-      expect(result.isRight(), true);
+      expect(result.isRight(), isTrue);
       result.fold(
         (failure) => fail('Should return Right'),
         (user) {
@@ -236,7 +203,9 @@ void main() {
           expect(user.fullName, signUpParams.fullName);
         },
       );
-      verify(() => mockDocumentRef.set(any())).called(1);
+      
+      final doc = await fakeFirestore.collection('users').doc(userId).get();
+      expect(doc.exists, isTrue);
     });
 
     test('should return Failure when email already exists', () async {
@@ -249,7 +218,7 @@ void main() {
         params: signUpParams,
       );
 
-      expect(result.isLeft(), true);
+      expect(result.isLeft(), isTrue);
     });
   });
 

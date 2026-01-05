@@ -6,7 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:mocktail/mocktail.dart';
 
-import '../repo/auth_repo_test.dart';
+import '../mocks/auth_mocks.dart';
 
 void main() {
   late MockAuthRepository mockAuthRepository;
