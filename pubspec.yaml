@@ -49,6 +49,7 @@ dependencies:
   cached_network_image: ^3.4.1
   video_player: ^2.10.1
   google_sign_in: ^7.2.0
+  flutter_dotenv: ^6.0.0
 
 dev_dependencies:
   flutter_test:
@@ -81,6 +82,7 @@ flutter:
     - assets/translations/
     - assets/fonts/
     - assets/images/
+    - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
