@@ -2,12 +2,15 @@ name: Flutter Tests
 
 on:
   push:
-    branches-ignore:
-      - main
-      - dev
-  
+    branches:
+      - 'feat/**'
+
   pull_request:
     branches: [ dev ]
+
+permissions:
+  contents: write
+  pull-requests: write
 
 jobs:
   test:
@@ -15,70 +18,43 @@ jobs:
     
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.38.5'  
+          flutter-version: '3.38.5' 
           channel: 'stable'
+          cache: true
       
-      # Step 3: Get dependencies
       - name: Install dependencies
         run: flutter pub get
       
-      # Step 4: Analyze code (checks for errors)
+      - name: Create dummy .env
+        run: |
+          echo "CLOUDINARY_CLOUD_NAME=mock" > .env
+          echo "CLOUDINARY_UPLOAD_PRESET=mock" >> .env
+          echo "SERVER_CLIENT_ID=mock" >> .env
+      
       - name: Analyze code
         run: flutter analyze
       
-      # Step 5: Run tests
       - name: Run tests
-        run: flutter test
-      
-      # Step 6: Check test coverage (optional)
-      - name: Check code coverage
         run: flutter test --coverage
-      
-      # Step 7: Upload coverage report (optional)
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
-        with:
-          files: ./coverage/lcov.info
-          fail_ci_if_error: false 
 
-  # Auto-merge job (runs only if tests pass)
   auto-merge:
-    needs: test  # This runs ONLY if test job succeeds
+    needs: test
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/auth'  # Only for auth branch
+    if: startsWith(github.ref, 'refs/heads/feat/')
     
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0  # Get full history
+        uses: actions/checkout@v4
       
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: auth
-          base: dev
-          title: "Auto-merge: Auth feature tests passed ✅"
-          body: |
-            ## 🎉 Automated Pull Request
-            
-            All tests passed successfully!
-            
-            **Branch:** auth → dev
-            **Tests:** ✅ Passed
-            
-            This PR was automatically created after successful test execution.
-          labels: automated, tests-passed
-      
-      # Optional: Auto-approve and merge
-      - name: Enable Pull Request Automerge
-        if: success()
-        run: gh pr merge --auto --merge
+      - name: Create and Merge PR
+        run: |
+          # '${{ github.ref_name }}' automatically gets the current branch name (e.g., feat/auth)
+          gh pr create --base dev --head ${{ github.ref_name }} --title "feat: ${{ github.ref_name }} verified ✅" --body "Automated PR created after all tests passed successfully."
+          gh pr merge --auto --merge
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
