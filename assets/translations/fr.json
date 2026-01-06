@@ -99,5 +99,27 @@
             "generic_server_error": "Erreur du serveur. Veuillez réessayer plus tard.",
             "unexpected": "Une erreur inattendue est survenue lors du téléchargement."
         }
+    },
+    "fuel_type": {
+        "petrol": "Essence",
+        "diesel": "Diesel",
+        "electric": "Électrique",
+        "hybrid": "Hybride"
+    },
+    "transmission": {
+        "manual": "Manuelle",
+        "automatic": "Automatique"
+    },
+    "car_features": {
+        "ac": "Climatisation",
+        "bluetooth": "Bluetooth",
+        "infotainment": "Écran Tactile (CarPlay/Android)",
+        "gps": "Cartes & Navigation",
+        "backup_camera": "Caméra de Recul",
+        "sunroof": "Toit Ouvrant",
+        "cruise_control": "Régulateur (Mode Autoroute)",
+        "type_c": "Chargeur Type-C Rapide",
+        "heated_seats": "Sièges Chauffants",
+        "keyless": "Démarrage sans Clé"
     }
 }

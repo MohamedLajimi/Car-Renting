@@ -99,5 +99,27 @@
             "generic_server_error": "An unexpected server error occurred.",
             "unexpected": "Something went wrong during upload."
         }
+    },
+    "fuel_type": {
+        "petrol": "Petrol",
+        "diesel": "Diesel",
+        "electric": "Electric",
+        "hybrid": "Hybrid"
+    },
+    "transmission": {
+        "manual": "Manual",
+        "automatic": "Automatic"
+    },
+    "car_features": {
+        "ac": "Air Conditioning",
+        "bluetooth": "Bluetooth",
+        "infotainment": "Large Touchscreen (CarPlay/Android)",
+        "gps": "Maps & Navigation",
+        "backup_camera": "Reverse Camera",
+        "sunroof": "Sunroof",
+        "cruise_control": "Auto-Speed (Highway Mode)",
+        "type_c": "Type-C Fast Charger",
+        "heated_seats": "Heated Seats",
+        "keyless": "Button Start (No Key)"
     }
 }
