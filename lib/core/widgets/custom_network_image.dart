@@ -21,16 +21,13 @@ class CustomNetworkImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = context.colorScheme;
-    final screenWidth = context.screenWidth;
 
-    final effectiveWidth = width ?? screenWidth;
     final effectiveHeight = height ?? 180;
 
     if (imageUrl == null || imageUrl!.isEmpty) {
       return ClipRRect(
         borderRadius: BorderRadius.circular(borderRadius),
         child: Container(
-          width: effectiveWidth,
           height: effectiveHeight,
           decoration: BoxDecoration(
             color: colorScheme.surfaceContainerHighest,
@@ -51,11 +48,9 @@ class CustomNetworkImage extends StatelessWidget {
       borderRadius: BorderRadius.circular(borderRadius),
       child: CachedNetworkImage(
         imageUrl: imageUrl!,
-        width: effectiveWidth,
         height: effectiveHeight,
         fit: fit,
         placeholder: (context, url) => Container(
-          width: effectiveWidth,
           height: effectiveHeight,
           decoration: BoxDecoration(
             color: colorScheme.surfaceContainerHighest,
@@ -64,7 +59,6 @@ class CustomNetworkImage extends StatelessWidget {
           child: const Center(child: CircularProgressIndicator()),
         ),
         errorWidget: (context, url, error) => Container(
-          width: effectiveWidth,
           height: effectiveHeight,
           decoration: BoxDecoration(
             color: colorScheme.surfaceContainerHighest,

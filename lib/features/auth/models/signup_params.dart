@@ -6,12 +6,16 @@ class SignUpParams {
   final String fullName;
   final String phoneNumber;
   final UserRole role;
+  final String? avatarUrl;
+  final String? licenceUrl;
 
-  SignUpParams({
+  const SignUpParams({
     required this.email,
     required this.password,
     required this.fullName,
     required this.phoneNumber,
     required this.role,
+    this.avatarUrl,
+    this.licenceUrl,
   });
 }

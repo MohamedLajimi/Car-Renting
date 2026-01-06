@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:car_renting/app_secrets.dart';
+import 'package:car_renting/env_config.dart';
 import 'package:car_renting/core/error/failure.dart';
 import 'package:car_renting/features/upload/repositories/i_upload_repository.dart';
 import 'package:dio/dio.dart';
@@ -10,8 +10,8 @@ import 'package:fpdart/fpdart.dart';
 class CloudinaryRepository implements IUploadRepository {
   final Dio _dio;
   
-  final String _cloudName = AppSecrets.cloudinaryCloudName;
-  final String _uploadPreset = AppSecrets.cloudinaryUploadPreset;
+  final String _cloudName = EnvConfig.cloudinaryCloudName;
+  final String _uploadPreset = EnvConfig.cloudinaryUploadPreset;
 
   CloudinaryRepository(this._dio);
 

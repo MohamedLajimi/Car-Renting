@@ -22,6 +22,67 @@
             "no_account": "Don't have an account?",
             "register_now": "Register Now",
             "connect_with_google": "Sign in with Google"
+        },
+        "register": {
+            "title": "Create Account",
+            "subtitle": "Join our community to rent or list your car today",
+            "full_name": "Full Name",
+            "email": "Email Address",
+            "phone": "Phone Number",
+            "password": "Password",
+            "confirm_password": "Confirm Password",
+            "register_button": "Create Account",
+            "continue_with": "OR CONTINUE WITH",
+            "have_account": "Already have an account?",
+            "login_now": "Log In",
+            "connect_with_google": "Sign up with Google",
+            "role_selection": {
+                "title": "I want to:",
+                "renter": "Rent a Car",
+                "owner": "List my Car"
+            },
+            "signup_success": "Account created successfully! Welcome aboard."
+        },
+        "validation": {
+            "required": "is required",
+            "invalid_email": "Please enter a valid email address",
+            "invalid_password": "Password must be at least 8 characters, include an uppercase letter and a symbol",
+            "password_hint": "Password: 8+ chars, 1 uppercase, 1 symbol"
+        },
+        "error": {
+            "email_already_in_use": "This email is already registered. Try logging in.",
+            "invalid_email": "The email address is not valid.",
+            "weak_password": "The password is too weak.",
+            "user_not_found": "No user found with this email.",
+            "wrong_password": "Incorrect password. Please try again.",
+            "network": "Please check your internet connection.",
+            "db": "Could not save user profile. Please check your connection.",
+            "unknown": "An unexpected error occurred. Please try again.",
+            "canceled": "Sign-in was cancelled.",
+            "interrupted": "Sign-in was interrupted. Please try again.",
+            "config_error": "A technical configuration error occurred. Please contact support.",
+            "user_mismatch": "The account selected does not match our records.",
+            "ui_unavailable": "The login screen is currently unavailable. Please check Google Play Services.",
+            "google_unknown": "An unknown error occurred with Google Sign-in.",
+            "user_disabled": "This account has been disabled. Contact support.",
+            "invalid_credential": "Invalid email or password. Please try again."
+        },
+        "forgot_password": {
+            "title": "Forgot Password",
+            "subtitle": "Enter your email address and we will send you a link to reset your password.",
+            "email_label": "Email Address",
+            "send_button": "Send Reset Link",
+            "success_title": "Email Sent",
+            "success_message": "Check your inbox! We've sent a password reset link to {email}.",
+            "resend_label": "Didn't receive the email?",
+            "resend_button": "Resend Link",
+            "resend_wait": "Resend in {seconds}s",
+            "back_to_login": "Back to Login",
+            "error": {
+                "user_not_found": "No account found with this email address.",
+                "invalid_email": "Please enter a valid email address.",
+                "too_many_requests": "Too many requests. Please try again later."
+            }
         }
     },
     "media": {

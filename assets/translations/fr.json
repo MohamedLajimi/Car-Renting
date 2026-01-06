@@ -22,6 +22,67 @@
             "no_account": "Vous n'avez pas de compte ?",
             "register_now": "Inscrivez-vous",
             "connect_with_google": "Connecter avec Google"
+        },
+        "register": {
+            "title": "Créer un compte",
+            "subtitle": "Rejoignez notre communauté pour louer ou proposer votre voiture",
+            "full_name": "Nom Complet",
+            "email": "Adresse E-mail",
+            "phone": "Numéro de Téléphone",
+            "password": "Mot de passe",
+            "confirm_password": "Confirmer le mot de passe",
+            "register_button": "S'inscrire",
+            "continue_with": "OU CONTINUER AVEC",
+            "have_account": "Vous avez déjà un compte ?",
+            "login_now": "Se connecter",
+            "connect_with_google": "S'inscrire avec Google",
+            "role_selection": {
+                "title": "Je veux :",
+                "renter": "Louer une voiture",
+                "owner": "Proposer ma voiture"
+            },
+            "signup_success": "Compte créé avec succès ! Bienvenue parmi nous."
+        },
+        "validation": {
+            "required": "est requis",
+            "invalid_email": "Veuillez entrer une adresse e-mail valide",
+            "invalid_password": "Le mot de passe doit contenir au moins 8 caractères, une majuscule et un symbole",
+            "password_hint": "Mdp: 8+ carac, 1 majuscule, 1 symbole"
+        },
+        "error": {
+            "email_already_in_use": "Cet e-mail est déjà enregistré. Essayez de vous connecter.",
+            "invalid_email": "L'adresse e-mail n'est pas valide.",
+            "weak_password": "Le mot de passe est trop faible.",
+            "user_not_found": "Aucun utilisateur trouvé avec cet e-mail.",
+            "wrong_password": "Mot de passe incorrect. Veuillez réessayer.",
+            "network": "Veuillez vérifier votre connexion internet.",
+            "db": "Impossible d'enregistrer le profil. Vérifiez votre connexion.",
+            "google_unknown": "Une erreur inattendue s'est produite. Veuillez réessayer.",
+            "canceled": "La connexion a été annulée.",
+            "interrupted": "La connexion a été interrompue. Veuillez réessayer.",
+            "config_error": "Une erreur technique de configuration est survenue. Veuillez contacter le support.",
+            "user_mismatch": "Le compte sélectionné ne correspond pas à nos dossiers.",
+            "ui_unavailable": "L'écran de connexion est indisponible. Vérifiez les services Google Play.",
+            "unknown": "Une erreur inconnue est survenue lors de la connexion Google.",
+            "user_disabled": "Ce compte a été désactivé. Contactez le support.",
+            "invalid_credential": "E-mail ou mot de passe invalide. Veuillez réessayer."
+        },
+        "forgot_password": {
+            "title": "Mot de passe oublié",
+            "subtitle": "Entrez votre adresse e-mail et nous vous enverrons un lien pour réinitialiser votre mot de passe.",
+            "email_label": "Adresse e-mail",
+            "send_button": "Envoyer le lien",
+            "success_title": "E-mail envoyé",
+            "success_message": "Vérifiez votre boîte de réception ! Nous avons envoyé un lien de réinitialisation à {email}.",
+            "resend_label": "Vous n'avez pas reçu l'e-mail ?",
+            "resend_button": "Renvoyer le lien",
+            "resend_wait": "Renvoyer dans {seconds}s",
+            "back_to_login": "Retour à la connexion",
+            "error": {
+                "user_not_found": "Aucun compte trouvé avec cette adresse e-mail.",
+                "invalid_email": "Veuillez entrer une adresse e-mail valide.",
+                "too_many_requests": "Trop de demandes. Veuillez réessayer plus tard."
+            }
         }
     },
     "media": {
