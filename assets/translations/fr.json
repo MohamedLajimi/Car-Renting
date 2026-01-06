@@ -121,5 +121,15 @@
         "type_c": "Chargeur Type-C Rapide",
         "heated_seats": "Sièges Chauffants",
         "keyless": "Démarrage sans Clé"
+    },
+    "car": {
+        "error": {
+            "permission_denied": "Vous n'avez pas la permission d'effectuer cette action.",
+            "not_found": "Le véhicule demandé est introuvable.",
+            "network": "Erreur de connexion. Veuillez vérifier votre réseau.",
+            "storage_full": "Limite de stockage atteinte. Veuillez contacter le support.",
+            "database_error": "Une erreur de base de données est survenue.",
+            "unknown": "Une erreur inattendue est survenue lors de la gestion du véhicule."
+        }
     }
 }

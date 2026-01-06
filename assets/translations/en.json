@@ -121,5 +121,15 @@
         "type_c": "Type-C Fast Charger",
         "heated_seats": "Heated Seats",
         "keyless": "Button Start (No Key)"
+    },
+    "car": {
+        "error": {
+            "permission_denied": "You don't have permission to perform this action.",
+            "not_found": "The requested car could not be found.",
+            "network": "Connection error. Please check your internet.",
+            "storage_full": "Storage limit reached. Please contact support.",
+            "database_error": "A database error occurred. Please try again.",
+            "unknown": "An unexpected error occurred in car management."
+        }
     }
 }
