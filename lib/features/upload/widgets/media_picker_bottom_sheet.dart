@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:car_renting/core/di/injection_container.dart';
 import 'package:car_renting/core/extensions/theme_extensions.dart';
-import 'package:car_renting/features/upload/service/upload_service.dart';
+import 'package:car_renting/core/services/upload_service.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

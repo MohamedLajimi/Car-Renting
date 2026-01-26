@@ -1,7 +1,7 @@
 import 'package:car_renting/core/di/injection_container.dart';
 import 'package:car_renting/features/upload/cubit/upload_cubit.dart';
 import 'package:car_renting/features/upload/repositories/cloudinary_repository.dart';
-import 'package:car_renting/features/upload/service/upload_service.dart';
+import 'package:car_renting/core/services/upload_service.dart';
 import 'package:dio/dio.dart';
 
 Future<void> initUploadDependencies() async {

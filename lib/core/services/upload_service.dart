@@ -13,10 +13,18 @@ class UploadService {
     return selectedFile != null ? File(selectedFile.path) : null;
   }
 
-    Future<File?> pickVideo(ImageSource source) async {
+  Future<List<File>?> pickMultipleImages() async {
+    final List<XFile> selectedFiles = await _picker.pickMultiImage(
+      imageQuality: 70,
+    );
+
+    return selectedFiles.map((e) => File(e.path)).toList();
+  }
+
+  Future<File?> pickVideo(ImageSource source) async {
     final XFile? selectedFile = await _picker.pickVideo(
       source: source,
-      maxDuration: Duration(seconds: 30)
+      maxDuration: Duration(seconds: 30),
     );
     return selectedFile != null ? File(selectedFile.path) : null;
   }

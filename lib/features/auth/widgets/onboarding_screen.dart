@@ -1,8 +1,8 @@
 import 'package:car_renting/core/app_status_bloc/app_status_bloc.dart';
 import 'package:car_renting/core/extensions/theme_extensions.dart';
-import 'package:car_renting/core/routes/app_routes.dart';
 import 'package:car_renting/core/widgets/custom_button.dart';
 import 'package:car_renting/core/widgets/custom_indicator.dart';
+import 'package:car_renting/features/auth/routes/auth_routes_names.dart';
 import 'package:car_renting/features/auth/widgets/onboarding_widget.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -67,7 +67,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     return BlocListener<AppStatusBloc, AppStatusState>(
       listener: (context, state) {
         if (state is AppStatusUnauthenticated) {
-          context.go(AppRoutes.loginPath);
+          context.goNamed(AuthRoutesNames.login);
         }
       },
       child: Scaffold(

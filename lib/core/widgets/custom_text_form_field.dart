@@ -10,17 +10,21 @@ class CustomTextFormField extends StatelessWidget {
   final IconData? suffixIcon;
   final VoidCallback? onTapSuffixIcon;
   final String? Function(String?)? validator;
+  final ValueChanged<String>? onChanged;
+  final VoidCallback? onEditingComplete;
 
   const CustomTextFormField({
     super.key,
     required this.hintText,
     required this.controller,
-    this.inputType=TextInputType.text,
+    this.inputType = TextInputType.text,
     this.isObscureText = false,
     this.prefixIcon,
     this.suffixIcon,
     this.onTapSuffixIcon,
     this.validator,
+    this.onChanged,
+    this.onEditingComplete,
   });
 
   @override
@@ -29,19 +33,37 @@ class CustomTextFormField extends StatelessWidget {
       controller: controller,
       obscureText: isObscureText,
       keyboardType: inputType,
+      onChanged: onChanged,
+      onEditingComplete: onEditingComplete,
+
+      style: context.textTheme.bodyMedium,
+
+      onTapOutside: (event) {
+        FocusManager.instance.primaryFocus?.unfocus();
+        onEditingComplete?.call();
+      },
+
       validator: (value) {
         if (value == null || value.trim().isEmpty) {
-          return "$hintText is required";
+          return "Field is required";
         }
         return validator?.call(value);
       },
+
       decoration: InputDecoration(
         hintText: hintText,
         prefixIcon: prefixIcon != null
-            ? Icon(prefixIcon, color: context.colorScheme.onSurface)
+            ? Icon(
+                prefixIcon,
+                color: context.colorScheme.onSurfaceVariant,
+                size: 18,
+              )
             : null,
         suffixIcon: suffixIcon != null
-            ? IconButton(onPressed: onTapSuffixIcon, icon: Icon(suffixIcon))
+            ? IconButton(
+                onPressed: onTapSuffixIcon,
+                icon: Icon(suffixIcon, color: context.colorScheme.primary),
+              )
             : null,
       ),
     );

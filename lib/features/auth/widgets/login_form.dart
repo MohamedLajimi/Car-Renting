@@ -1,9 +1,9 @@
 import 'package:car_renting/core/extensions/theme_extensions.dart';
-import 'package:car_renting/core/routes/app_routes.dart';
 import 'package:car_renting/core/utils/auth_validators.dart';
 import 'package:car_renting/core/widgets/custom_button.dart';
 import 'package:car_renting/core/widgets/custom_text_form_field.dart';
 import 'package:car_renting/features/auth/cubits/login_cubit/login_cubit.dart';
+import 'package:car_renting/features/auth/routes/auth_routes_names.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -79,7 +79,7 @@ class _LoginFormState extends State<LoginForm> {
           Align(
             alignment: AlignmentGeometry.centerRight,
             child: TextButton(
-              onPressed: () => context.push(AppRoutes.forgotPasswordPath),
+              onPressed: () => context.pushNamed(AuthRoutesNames.forgotPassword),
               child: Text(
                 context.tr('auth.login.forgot_password'),
                 style: context.textTheme.bodyMedium,

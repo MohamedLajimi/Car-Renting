@@ -1,5 +1,6 @@
 import 'package:car_renting/core/app_status_bloc/app_status_bloc.dart';
-import 'package:car_renting/core/routes/app_routes.dart';
+import 'package:car_renting/features/auth/routes/auth_routes_names.dart';
+import 'package:car_renting/features/car-management/routes/car_management_routes_names.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -9,11 +10,11 @@ class RootLoadingScreen extends StatelessWidget {
 
   void _handleListener(BuildContext context, AppStatusState state) {
     if (state is AppStatusOnboardingRequired) {
-      context.go(AppRoutes.onboardingPath);
+      context.goNamed(AuthRoutesNames.onboarding);
     } else if (state is AppStatusAuthenticated) {
-      context.go(AppRoutes.homePath);
+      context.goNamed(CarManagementRoutesNames.renterCarList);
     } else if (state is AppStatusUnauthenticated) {
-      context.go(AppRoutes.loginPath);
+      context.goNamed(AuthRoutesNames.login);
     }
   }
 

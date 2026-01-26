@@ -99,5 +99,155 @@
             "generic_server_error": "Erreur du serveur. Veuillez réessayer plus tard.",
             "unexpected": "Une erreur inattendue est survenue lors du téléchargement."
         }
+    },
+    "car": {
+        "error": {
+            "permission_denied": "Vous n'avez pas la permission d'effectuer cette action.",
+            "not_found": "Le véhicule demandé est introuvable.",
+            "network": "Erreur de connexion. Veuillez vérifier votre réseau.",
+            "storage_full": "Limite de stockage atteinte. Veuillez contacter le support.",
+            "database_error": "Une erreur de base de données est survenue.",
+            "unknown": "Une erreur inattendue est survenue lors de la gestion du véhicule."
+        }
+    },
+    "car_management": {
+        "status_manager": {
+            "visibility_title": "Visibilité du véhicule",
+            "public_hint": "Votre voiture est visible par tous et peut être réservée.",
+            "hidden_hint": "Votre voiture est masquée. Personne ne peut la voir ou la réserver.",
+            "reason": "Commentaire de l'admin",
+            "pending_desc": "Notre équipe examine actuellement vos documents. Cela prend généralement 24 à 48 heures.",
+            "suspended_desc": "Cette annonce a été suspendue suite à une violation des conditions. Veuillez contacter le support."
+        },
+        "messages": {
+            "add_success": "Votre annonce a été créée avec succès !",
+            "update_success": "Les informations du véhicule ont été mises à jour.",
+            "delete_success": "Le véhicule a été retiré de vos annonces.",
+            "delete_confirm_title": "Supprimer le véhicule ?",
+            "delete_confirm_body": "Êtes-vous sûr de vouloir supprimer ce véhicule ? Cette action est irréversible."
+        },
+        "title_add": "Ajouter une voiture",
+        "title_update": "Modifier la voiture",
+        "sections": {
+            "basics": "Spécifications de base",
+            "basics_sub": "Saisissez les détails du fabricant et les caractéristiques techniques.",
+            "location": "Emplacement et disponibilité",
+            "location_sub": "Définissez le lieu de retrait et bloquez les dates d'indisponibilité.",
+            "media": "Photos et Documents",
+            "media_sub": "Ajoutez des photos de haute qualité pour attirer des locataires et téléchargez les documents légaux requis pour la vérification."
+        },
+        "fields": {
+            "brand": "Marque",
+            "model": "Modèle",
+            "year": "Année",
+            "transmission": "Transmission",
+            "fuel_type": "Type de carburant",
+            "price": "Prix par jour",
+            "seats": "Nombre de places",
+            "address": "Adresse de ramassage",
+            "busy_days": "Dates indisponibles",
+            "features": "Équipements"
+        },
+        "placeholders": {
+            "brand": "ex. Mercedes",
+            "model": "ex. Classe S",
+            "price": "0,00",
+            "address": "Appuyez pour choisir l'emplacement"
+        },
+        "buttons": {
+            "next": "Étape suivante",
+            "back": "Précédent",
+            "submit": "Confirmer et enregistrer",
+            "pick_location": "Sélectionner sur la carte",
+            "add_images": "Ajouter des images",
+            "retry": "Réessayer"
+        },
+        "validation": {
+            "required": "Ce champ est obligatoire",
+            "min_images": "Veuillez ajouter au moins 3 images",
+            "invalid_price": "Veuillez entrer un prix valide"
+        },
+        "media": {
+            "tap_to_upload": "Appuyez pour ajouter les photos du véhicule",
+            "limit_info": "Ajoutez entre 3 et 10 images",
+            "count_label": "{count}/10 images ajoutées"
+        },
+        "docs": {
+            "registration": "Carte Grise",
+            "registration_hint": "Téléchargez une photo lisible de la carte grise.",
+            "insurance": "Attestation d'Assurance",
+            "insurance_hint": "Vérifiez que la date de validité et le matricule sont visibles.",
+            "technicalInspection": "Visite Technique",
+            "technicalInspection_hint": "Obligatoire pour les véhicules de plus de 3 ans.",
+            "identityCard": "Carte d'Identité Nationale (CIN)",
+            "identityCard_hint": "Téléchargez le recto et le verso de votre CIN.",
+            "drivingLicense": "Permis de Conduire",
+            "drivingLicense_hint": "Téléchargez une photo lisible de votre permis valide."
+        },
+        "search": {
+            "hint": "Rechercher par modèle ou marque...",
+            "clear_all": "Effacer tout",
+            "no_results_title": "Aucun véhicule trouvé",
+            "no_results_desc": "Essayez de modifier vos filtres ou votre recherche."
+        },
+        "empty": {
+            "fleet_title": "Lancez votre activité",
+            "fleet_desc": "Vous n'avez pas encore ajouté de voitures à votre flotte. Publiez votre annonce dès maintenant pour commencer à gagner !",
+            "add_first_button": "Ajouter ma première voiture",
+            "no_results_title": "Aucun résultat trouvé",
+            "no_results_desc": "Nous n'avons trouvé aucun véhicule correspondant à vos filtres actuels.",
+            "clear_filters": "Effacer les filtres"
+        },
+        "filters": {
+            "title": "Filtrer les voitures",
+            "city": "Ville",
+            "fuel_type_title": "Type de carburant",
+            "transmission_title": "Transmission",
+            "price_range_title": "Fourchette de prix (par jour)",
+            "any": "Tous",
+            "reset": "Réinitialiser",
+            "apply": "Appliquer"
+        }
+    },
+    "car_status": {
+        "pending": "En attente",
+        "verified": "Vérifié",
+        "rejected": "Refusé",
+        "hidden": "Masqué",
+        "suspended": "Suspendu"
+    },
+    "fuel_type": {
+        "petrol": "Essence",
+        "diesel": "Diesel",
+        "electric": "Électrique",
+        "hybrid": "Hybride"
+    },
+    "transmission": {
+        "manual": "Manuelle",
+        "automatic": "Automatique"
+    },
+    "car_features": {
+        "ac": "Climatisation",
+        "bluetooth": "Bluetooth",
+        "infotainment": "Système d'infodivertissement",
+        "gps": "Navigation GPS",
+        "backupCamera": "Caméra de recul",
+        "sunroof": "Toit ouvrant",
+        "cruiseControl": "Régulateur de vitesse",
+        "typeC": "Ports USB-C",
+        "heatedSeats": "Sièges chauffants",
+        "keyless": "Entrée sans clé"
+    },
+    "location": {
+        "errors": {
+            "permission_denied": "L'accès à la localisation a été refusé. Nous en avons besoin pour situer votre véhicule.",
+            "permission_permanently_denied": "L'accès est bloqué de façon permanente. Veuillez l'activer dans les paramètres du système.",
+            "location_disabled_error": "Le GPS est désactivé. Veuillez activer les services de localisation sur votre appareil.",
+            "coords_not_found": "Impossible de trouver les coordonnées de cette adresse.",
+            "search_failed": "La recherche de l'emplacement a échoué. Veuillez réessayer.",
+            "unknown_address": "Adresse inconnue",
+            "address_not_found": "Adresse introuvable",
+            "unexpected_error": "Une erreur inattendue s'est produite. Veuillez réessayer."
+        }
     }
 }
