@@ -6,22 +6,26 @@ class CustomButton extends StatelessWidget {
   final VoidCallback onPressed;
   final bool isLoading;
   final Color? backgroundColor;
+  final bool? isEnabled;
 
   const CustomButton({
     super.key,
     required this.text,
     required this.onPressed,
     this.isLoading = false,
-    this.backgroundColor
+    this.backgroundColor,
+    this.isEnabled = true,
   });
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: isLoading ? null : onPressed,
+      onPressed: (isEnabled == true && !isLoading) ? onPressed : null,
       style: ElevatedButton.styleFrom(
         fixedSize: const Size(double.infinity, 55),
-        backgroundColor: backgroundColor
+        backgroundColor: isEnabled ?? true
+            ? backgroundColor
+            : context.colorScheme.surfaceContainer,
       ),
       child: isLoading
           ? SizedBox(

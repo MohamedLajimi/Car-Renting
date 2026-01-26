@@ -1,3 +1,4 @@
+import 'package:car_renting/bloc_observer.dart';
 import 'package:car_renting/core/app_status_bloc/app_status_bloc.dart';
 import 'package:car_renting/core/di/injection_container.dart';
 import 'package:car_renting/core/routes/router.dart';
@@ -10,7 +11,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await init();
-  
+
+  Bloc.observer = SimpleBlocObserver();
+
   runApp(
     EasyLocalization(
       supportedLocales: [Locale('en'), Locale('fr')],

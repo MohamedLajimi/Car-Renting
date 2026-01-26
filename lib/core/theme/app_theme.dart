@@ -22,6 +22,7 @@ class AppTheme {
       error: AppPalette.error,
       onSurface: AppPalette.primaryText,
       onSurfaceVariant: AppPalette.secondaryText,
+      surfaceContainer: AppPalette.card,
     ),
 
     actionIconTheme: ActionIconThemeData(
@@ -78,11 +79,40 @@ class AppTheme {
 
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       shape: CircleBorder(),
+      foregroundColor: AppPalette.primaryText,
     ),
 
-    dividerTheme: DividerThemeData(
-      color: AppPalette.secondaryText,
-      thickness: 0.4,
+    dividerTheme: DividerThemeData(color: AppPalette.border, thickness: 0.5),
+
+    sliderTheme: SliderThemeData(
+      activeTrackColor: AppPalette.primary,
+      inactiveTrackColor: AppPalette.border,
+      trackHeight: 6,
+
+      thumbColor: Colors.white,
+      thumbShape: const RoundSliderThumbShape(
+        enabledThumbRadius: 8,
+        elevation: 4,
+      ),
+      overlayColor: AppPalette.primary.withValues(alpha: 0.2),
+      overlayShape: const RoundSliderOverlayShape(overlayRadius: 24),
+
+      valueIndicatorColor: AppPalette.primary,
+      valueIndicatorTextStyle: const TextStyle(
+        color: Colors.white,
+        fontSize: 14,
+        fontWeight: FontWeight.w600,
+      ),
+      valueIndicatorShape: const PaddleSliderValueIndicatorShape(),
+      showValueIndicator: ShowValueIndicator.onDrag,
+
+      rangeThumbShape: const RoundRangeSliderThumbShape(
+        enabledThumbRadius: 8,
+        elevation: 4,
+      ),
+
+      activeTickMarkColor: Colors.transparent,
+      inactiveTickMarkColor: Colors.transparent,
     ),
 
     inputDecorationTheme: InputDecorationTheme(

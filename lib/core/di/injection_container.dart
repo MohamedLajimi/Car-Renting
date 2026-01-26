@@ -1,5 +1,6 @@
 import 'package:car_renting/env_config.dart';
 import 'package:car_renting/features/auth/init_auth_dependencies.dart';
+import 'package:car_renting/features/car-management/init_car_management_dependencies.dart';
 import 'package:car_renting/features/upload/init_upload_dependencies.dart';
 import 'package:car_renting/firebase_options.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -17,7 +18,7 @@ Future<void> init() async {
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-    await GoogleSignIn.instance.initialize(
+  await GoogleSignIn.instance.initialize(
     serverClientId: EnvConfig.serverClientId,
   );
 
@@ -27,11 +28,11 @@ Future<void> init() async {
 
   serviceLocator.registerLazySingleton(() => sharedPrefs);
 
-
-
   serviceLocator.registerLazySingleton(() => FirebaseFirestore.instance);
 
   await initAuthDependencies();
 
   await initUploadDependencies();
+
+  await initCarManagementDependencies();
 }

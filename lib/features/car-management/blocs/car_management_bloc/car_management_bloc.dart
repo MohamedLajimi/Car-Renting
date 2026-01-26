@@ -142,7 +142,7 @@ class CarManagementBloc extends Bloc<CarManagementEvent, CarManagementState> {
           CarManagementActionState(
             type: ActionType.create,
             status: ActionStatus.success,
-            message: 'car_added',
+            message: 'car_management.messages.add_success',
           ),
         );
         add(const GetRenterCarsRequested());
@@ -176,7 +176,7 @@ class CarManagementBloc extends Bloc<CarManagementEvent, CarManagementState> {
           CarManagementActionState(
             type: ActionType.update,
             status: ActionStatus.success,
-            message: 'car_updated',
+            message: 'car_management.messages.update_success',
           ),
         );
         if (event.params.id != null) {
@@ -214,7 +214,7 @@ class CarManagementBloc extends Bloc<CarManagementEvent, CarManagementState> {
           CarManagementActionState(
             type: ActionType.delete,
             status: ActionStatus.success,
-            message: 'car_deleted',
+            message: 'car_management.messages.delete_success',
           ),
         );
         add(const GetRenterCarsRequested());

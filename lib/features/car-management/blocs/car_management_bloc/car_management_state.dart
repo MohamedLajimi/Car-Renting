@@ -13,7 +13,7 @@ final class CarManagementInitial extends CarManagementState {}
 final class CarListState extends CarManagementState {
   final DataStatus status;
   final List<CarModel> cars;
-  final CarFilterParams? filters;
+  final CarFilterParams filters;
   final int totalCount;
   final bool hasNextPage;
   final bool isLoadingMore;
@@ -23,17 +23,17 @@ final class CarListState extends CarManagementState {
   const CarListState({
     this.status = DataStatus.initial,
     this.cars = const [],
-    this.filters,
+    required this.filters,
     this.totalCount = 0,
     this.hasNextPage = true,
-    this.isLoadingMore=false,
+    this.isLoadingMore = false,
     this.lastDocument,
     this.errorMessage,
   });
 
   bool get isLoading => status == DataStatus.loading;
   bool get isSuccess => status == DataStatus.success;
-  bool get isError => status == DataStatus.error;
+  bool get isError => status == DataStatus.error && errorMessage != null;
   bool get isEmpty => cars.isEmpty && status == DataStatus.success;
 
   CarListState copyWith({
@@ -51,7 +51,7 @@ final class CarListState extends CarManagementState {
     filters: filters ?? this.filters,
     totalCount: totalCount ?? this.totalCount,
     hasNextPage: hasNextPage ?? this.hasNextPage,
-    isLoadingMore: isLoadingMore??this.isLoadingMore,
+    isLoadingMore: isLoadingMore ?? this.isLoadingMore,
     lastDocument: lastDocument ?? this.lastDocument,
     errorMessage: errorMessage ?? this.errorMessage,
   );

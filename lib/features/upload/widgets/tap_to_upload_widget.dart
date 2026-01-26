@@ -4,8 +4,14 @@ import 'package:flutter/material.dart';
 
 class TapToUploadWidget extends StatelessWidget {
   final VoidCallback onTap;
+  final IconData? icon;
   final String? desc;
-  const TapToUploadWidget({super.key, required this.onTap, this.desc});
+  const TapToUploadWidget({
+    super.key,
+    required this.onTap,
+    this.desc,
+    this.icon,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +25,10 @@ class TapToUploadWidget extends StatelessWidget {
           padding: const EdgeInsets.all(16),
           child: Column(
             mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: .center,
             children: [
               Icon(
-                Icons.cloud_upload_outlined,
+                icon ?? Icons.cloud_upload_outlined,
                 size: 48,
                 color: colorScheme.onSurfaceVariant,
               ),

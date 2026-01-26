@@ -1,114 +1,146 @@
+import 'package:car_renting/core/enums/car_feature_enum.dart';
+import 'package:car_renting/core/enums/car_status_enum.dart';
+import 'package:car_renting/core/enums/currency_enum.dart';
+import 'package:car_renting/core/enums/fuel_type_enum.dart';
+import 'package:car_renting/core/enums/transmission_enum.dart';
+import 'package:car_renting/features/car-management/models/car_document.dart';
+import 'package:car_renting/features/car-management/models/car_location.dart';
 import 'package:equatable/equatable.dart';
-import 'package:easy_localization/easy_localization.dart';
-
-enum FuelType {
-  petrol,
-  diesel,
-  electric,
-  hybrid;
-
-  String get displayName => 'fuel_type.$name'.tr();
-}
-
-enum Transmission {
-  manual,
-  automatic;
-
-  String get displayName => 'transmission.$name'.tr();
-}
-
-enum CarFeature {
-  ac,
-  bluetooth,
-  infotainment,
-  gps,
-  backupCamera,
-  sunroof,
-  cruiseControl,
-  typeC,
-  heatedSeats,
-  keyless;
-
-  String get displayName => 'car_features.$name'.tr();
-}
 
 class CarModel extends Equatable {
   final String id;
+  final CarStatus status;
   final String ownerId;
   final String brand;
   final String model;
+  final int year;
   final FuelType fuelType;
   final Transmission transmission;
   final double pricePerDay;
-  final List<String> images;
+  final Currency currency;
   final int seats;
   final List<CarFeature> features;
-  final String address;
-  final double lat;
-  final double lng;
-  final List<DateTime> busyDays;
+  final CarLocation location;
+  final List<DateTime> blockedDays;
+  final List<DateTime> bookedDays;
+  final List<String> images;
+  final List<CarDocument> documents;
   final double rate;
 
   const CarModel({
     required this.id,
+    required this.status,
     required this.ownerId,
     required this.brand,
     required this.model,
+    required this.year,
     required this.fuelType,
     required this.transmission,
     required this.pricePerDay,
-    required this.images,
+    required this.currency,
     required this.seats,
     required this.features,
-    required this.address,
-    required this.lat,
-    required this.lng,
-    required this.busyDays,
+    required this.location,
+    required this.blockedDays,
+    required this.bookedDays,
+    required this.images,
+    required this.documents,
     required this.rate,
   });
 
   factory CarModel.fromMap(Map<String, dynamic> map, String docId) {
     return CarModel(
       id: docId,
+      status: CarStatus.fromMap(map['status']),
       ownerId: map['ownerId'] ?? '',
       brand: map['brand'] ?? '',
       model: map['model'] ?? '',
-      fuelType: FuelType.values.byName(map['fuelType'] ?? 'petrol'),
-      transmission: Transmission.values.byName(map['transmission'] ?? 'manual'),
+      fuelType: FuelType.fromMap(map['fuelType']),
+      year: map['year']?.toInt() ?? 2020,
+      transmission: Transmission.fromMap(map['transmission']),
       pricePerDay: (map['pricePerDay'] ?? 0).toDouble(),
-      images: List<String>.from(map['images'] ?? []),
+      currency: Currency.fromMap(map['currency']),
       seats: map['seats']?.toInt() ?? 4,
       features: (map['features'] as List? ?? [])
           .map((e) => CarFeature.values.byName(e.toString()))
           .toList(),
-      address: map['address'] ?? '',
-      lat: (map['lat'] ?? 0.0).toDouble(),
-      lng: (map['lng'] ?? 0.0).toDouble(),
-      busyDays: (map['busyDays'] as List? ?? [])
+      location: CarLocation.fromMap(map['location']),
+      blockedDays: (map['blockedDays'] as List? ?? [])
           .map((e) => DateTime.parse(e))
+          .toList(),
+      bookedDays: (map['bookedDays'] as List? ?? [])
+          .map((e) => DateTime.parse(e))
+          .toList(),
+      images: List<String>.from(map['images'] ?? []),
+      documents: (map['documents'] as List? ?? [])
+          .map((e) => CarDocument.fromMap(e))
           .toList(),
       rate: (map['rate'] ?? 0.0).toDouble(),
     );
   }
-  Map<String, dynamic> toMap() {
-    return {
-      'ownerId': ownerId,
-      'brand': brand,
-      'model': model,
-      'fuelType': fuelType.name,
-      'transmission': transmission.name,
-      'pricePerDay': pricePerDay,
-      'images': images,
-      'seats': seats,
-      'features': features.map((e) => e.name).toList(),
-      'address': address,
-      'lat': lat,
-      'lng': lng,
-      'busyDays': busyDays.map((e) => e.toIso8601String()).toList(),
-      'rate': rate,
-    };
+  bool get isAvailable {
+    final today = DateTime.now();
+    final todayDate = DateTime(today.year, today.month, today.day);
+
+    return !bookedDays.any((date) {
+          final bookingDate = DateTime(date.year, date.month, date.day);
+          return bookingDate == todayDate;
+        }) &&
+        !blockedDays.any((date) {
+          final blockedDate = DateTime(date.year, date.month, date.day);
+          return blockedDate == todayDate;
+        });
+  }
+
+  factory CarModel.dummy() {
+    return CarModel(
+      id: 'dummy-id',
+      status: CarStatus.verified,
+      ownerId: 'dummy-owner',
+      brand: 'Mercedes',
+      model: 'S-Class 2024',
+      year: 2024,
+      fuelType: FuelType.petrol,
+      transmission: Transmission.automatic,
+      pricePerDay: 150.0,
+      currency: Currency.tnd,
+      images: const ['https://via.placeholder.com/400x200.png?text=Car+Image'],
+      seats: 5,
+      features: const [CarFeature.ac, CarFeature.bluetooth, CarFeature.gps],
+      location: CarLocation(
+        address: 'Rue de chemin vert 87, Paris',
+        city: 'Paris',
+        lat: 34.0736,
+        lng: -118.4004,
+      ),
+      blockedDays: const [],
+      bookedDays: const [],
+      rate: 4.8,
+      documents: [],
+    );
+  }
+
+  static List<CarModel> dummyList(int length) {
+    return List.generate(length, (index) => CarModel.dummy());
   }
 
   @override
-  List<Object?> get props => [id, ownerId, brand, model];
+  List<Object?> get props => [
+    id,
+    status,
+    ownerId,
+    brand,
+    model,
+    year,
+    pricePerDay,
+    currency,
+    seats,
+    features,
+    location,
+    blockedDays,
+    bookedDays,
+    images,
+    documents,
+    rate,
+  ];
 }

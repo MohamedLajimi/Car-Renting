@@ -1,9 +1,11 @@
 import 'package:car_renting/core/di/injection_container.dart';
-import 'package:car_renting/features/car-management/bloc/car_management_bloc.dart';
+import 'package:car_renting/features/car-management/blocs/car_form_cubit/car_form_cubit.dart';
+import 'package:car_renting/features/car-management/blocs/car_management_bloc/car_management_bloc.dart';
 import 'package:car_renting/features/car-management/routes/car_management_routes_names.dart';
 import 'package:car_renting/features/car-management/screens/car_detail_screen.dart';
 import 'package:car_renting/features/car-management/screens/car_form_screen.dart';
 import 'package:car_renting/features/car-management/screens/renter_car_list_screen.dart';
+import 'package:car_renting/features/upload/cubit/upload_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -22,7 +24,14 @@ class CarManagementRoutes {
           GoRoute(
             name: CarManagementRoutesNames.addCar,
             path: CarManagementRoutesNames.addCarPath,
-            builder: (context, state) => const CarFormScreen(),
+            builder: (context, state) => MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create: (context) => serviceLocator<CarFormCubit>(),
+                ),
+              ],
+              child: const CarFormScreen(),
+            ),
           ),
           GoRoute(
             name: CarManagementRoutesNames.carDetail,
@@ -37,7 +46,17 @@ class CarManagementRoutes {
                 path: CarManagementRoutesNames.updateCarPath,
                 builder: (context, state) {
                   final carId = state.pathParameters['carId'] as String;
-                  return CarFormScreen(carId: carId);
+                  return MultiBlocProvider(
+                    providers: [
+                      BlocProvider(
+                        create: (context) => serviceLocator<CarFormCubit>(),
+                      ),
+                      BlocProvider(
+                        create: (context) => serviceLocator<UploadCubit>(),
+                      ),
+                    ],
+                    child: CarFormScreen(carId: carId),
+                  );
                 },
               ),
             ],

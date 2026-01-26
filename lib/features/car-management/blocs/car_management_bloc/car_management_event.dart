@@ -8,9 +8,12 @@ sealed class CarManagementEvent extends Equatable {
 }
 
 class GetRenterCarsRequested extends CarManagementEvent {
-  final CarFilterParams? filters;
+  final CarFilterParams filters;
   final bool isRefresh;
-  const GetRenterCarsRequested({this.filters, this.isRefresh=false});
+  const GetRenterCarsRequested({
+    this.filters = const CarFilterParams(),
+    this.isRefresh = false,
+  });
 
   @override
   List<Object?> get props => [filters, isRefresh];

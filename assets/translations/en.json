@@ -100,6 +100,124 @@
             "unexpected": "Something went wrong during upload."
         }
     },
+    "car": {
+        "error": {
+            "renter_cars_title": "Failed to fetch your cars",
+            "renter_car_title": "Failed to fetch car details",
+            "permission_denied": "You don't have permission to perform this action.",
+            "not_found": "The requested car could not be found.",
+            "network": "Connection error. Please check your internet.",
+            "storage_full": "Storage limit reached. Please contact support.",
+            "database_error": "A database error occurred. Please try again.",
+            "unknown": "An unexpected error occurred in car management."
+        }
+    },
+    "car_management": {
+        "messages": {
+            "add_success": "Your car listing has been created successfully!",
+            "update_success": "The car details have been updated.",
+            "delete_success": "The car has been removed from your listings.",
+            "delete_confirm_title": "Delete Car?",
+            "delete_confirm_body": "Are you sure you want to remove this car? This action cannot be undone."
+        },
+        "title_add": "Add New Car",
+        "title_update": "Update Car",
+        "sections": {
+            "basics": "Basic Specifications",
+            "basics_sub": "Enter the manufacturer details and technical specs of your vehicle.",
+            "location": "Location & Availability",
+            "location_sub": "Set where the car can be picked up and block the days it's not available.",
+            "media": "Media & Documents",
+            "media_sub": "Add high-quality car photos to attract renters and upload the required legal documents for verification."
+        },
+        "status_manager": {
+            "visibility_title": "Car Visibility",
+            "public_hint": "Your car is visible to everyone and can be booked.",
+            "hidden_hint": "Your car is hidden. Nobody can see or book it.",
+            "reason": "Admin Feedback",
+            "pending_desc": "Our team is currently reviewing your documents. This usually takes 24-48 hours.",
+            "suspended_desc": "This listing has been suspended due to a policy violation. Please contact support."
+        },
+        "fields": {
+            "brand": "Brand",
+            "transmission": "Transmission",
+            "fuel_type": "Fuel Type",
+            "model": "Model",
+            "year": "Year",
+            "price": "Price per Day",
+            "seats": "Number of Seats",
+            "address": "Pickup Address",
+            "busy_days": "Blocked Dates",
+            "features": "Car Features"
+        },
+        "placeholders": {
+            "brand": "e.g. Mercedes",
+            "model": "e.g. S-Class",
+            "price": "0.00",
+            "address": "Tap to select location"
+        },
+        "buttons": {
+            "next": "Next Step",
+            "back": "Previous",
+            "submit": "Confirm & Save",
+            "pick_location": "Select on Map",
+            "add_images": "Add Images",
+            "retry": "Retry"
+        },
+        "validation": {
+            "required": "This field is required",
+            "min_images": "Please add at least 3 images",
+            "invalid_price": "Please enter a valid price"
+        },
+        "media": {
+            "tap_to_upload": "Tap to upload car images",
+            "limit_info": "Add between 3 and 10 images",
+            "count_label": "{count}/10 images added"
+        },
+        "docs": {
+            "registration": "Vehicle Registration (Carte Grise)",
+            "registration_hint": "Upload a clear photo of your car's registration document.",
+            "insurance": "Insurance Policy",
+            "insurance_hint": "Ensure the validity date and plate number are visible.",
+            "technicalInspection": "Technical Inspection",
+            "technicalInspection_hint": "Required if your car is more than 3 years old.",
+            "identityCard": "National ID Card (CIN)",
+            "identityCard_hint": "Upload both front and back of your ID.",
+            "drivingLicense": "Driving License",
+            "drivingLicense_hint": "Upload a clear photo of your valid license."
+        },
+        "search": {
+            "hint": "Search by model or brand...",
+            "clear_all": "Clear all",
+            "no_results_title": "No cars found",
+            "no_results_desc": "Try adjusting your filters or search query."
+        },
+        "empty": {
+            "fleet_title": "Start Your Business",
+            "fleet_desc": "You haven't added any cars to your fleet yet. List your first car to start earning with us!",
+            "add_first_button": "Add My First Car",
+            "no_results_title": "No Matches Found",
+            "no_results_desc": "We couldn't find any cars in your fleet matching these filters.",
+            "clear_filters": "Clear Filters"
+        },
+        "filters": {
+            "title": "Filter Cars",
+            "city": "City",
+            "fuel_type_title": "Fuel Type",
+            "transmission_title": "Transmission",
+            "price_range_title": "Price Range (per day)",
+            "any": "Any",
+            "reset": "Reset",
+            "apply": "Apply"
+        }
+    },
+    "car_status": {
+        "pending": "Pending Approval",
+        "verified": "Verified",
+        "rejected": "Rejected",
+        "hidden": "Hidden",
+        "suspended": "Suspended"
+    },
     "fuel_type": {
         "petrol": "Petrol",
         "diesel": "Diesel",
@@ -113,23 +231,25 @@
     "car_features": {
         "ac": "Air Conditioning",
         "bluetooth": "Bluetooth",
-        "infotainment": "Large Touchscreen (CarPlay/Android)",
-        "gps": "Maps & Navigation",
-        "backup_camera": "Reverse Camera",
+        "infotainment": "Infotainment System",
+        "gps": "GPS Navigation",
+        "backupCamera": "Backup Camera",
         "sunroof": "Sunroof",
-        "cruise_control": "Auto-Speed (Highway Mode)",
-        "type_c": "Type-C Fast Charger",
-        "heated_seats": "Heated Seats",
-        "keyless": "Button Start (No Key)"
+        "cruiseControl": "Cruise Control",
+        "typeC": "USB-C Ports",
+        "heatedSeats": "Heated Seats",
+        "keyless": "Keyless Entry"
     },
-    "car": {
-        "error": {
-            "permission_denied": "You don't have permission to perform this action.",
-            "not_found": "The requested car could not be found.",
-            "network": "Connection error. Please check your internet.",
-            "storage_full": "Storage limit reached. Please contact support.",
-            "database_error": "A database error occurred. Please try again.",
-            "unknown": "An unexpected error occurred in car management."
+    "location": {
+        "errors": {
+            "permission_denied": "Location permission was denied. We need it to find your car's location.",
+            "permission_permanently_denied": "Location permission is permanently denied. Please enable it in system settings.",
+            "location_disabled_error": "GPS is turned off. Please enable location services on your device.",
+            "coords_not_found": "Could not find coordinates for this address.",
+            "search_failed": "Location search failed. Please try again.",
+            "unknown_address": "Unknown Address",
+            "address_not_found": "Address not found",
+            "unexpected_error": "An unexpected error occurred. Please try again."
         }
     }
 }
